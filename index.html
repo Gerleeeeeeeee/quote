@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+      .container {
+        background-color: aquamarine;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .quotebox {
+        color: black;
+        background-color: white;
+        padding: 10px;
+        height: 60px;
+        width: 700px;
+        border: none;
+        border-radius: 7px;
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .random {
+        color: white;
+        background-color: darkred;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body">
+      <div class="container">
+        <div class="quotebox">
+          <p id="quote"></p>
+        </div>
+        <button onclick="idk()" class="random">Get random quote</button>
+      </div>
+    </div>
+    <script>
+      function idk() {
+        apiUrl = "https://api.quotable.io/random";
+        fetch(apiUrl, {
+          method: "Get",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            document.getElementById("quote").innerHTML = `
+            "${data.content}"- ${data.author}`;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    </script>
+  </body>
+</html>
